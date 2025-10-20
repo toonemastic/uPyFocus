@@ -24,7 +24,7 @@ class Stepper:
         self.steps = 0
         self.count = 0
 
-        self.pwm = PWM(self.step_pin, freq=self.freq, duty=1024)
+        self.pwm = PWM(self.step_pin, freq=self.freq, duty=1023)
         self.tim = Timer(motor_id)
 
         self.tim.init(period=1, mode=Timer.PERIODIC, callback=self.do_step)
@@ -63,7 +63,7 @@ class Stepper:
 
     def set_off(self):
         self.enable_pin.on()
-        self.pwm.duty(1024)
+        self.pwm.duty(1023)
         self.count = -1
         self.steps = 0
         self.done = True      
